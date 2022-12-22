@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { get } from 'http'
+import Link from 'next/link'
 
 const getPostMetadata = () => {
   const folder = 'posts/'
@@ -13,7 +14,9 @@ const HomePage = () => {
   const postMetadata = getPostMetadata()
   const postPreviews = postMetadata.map(slug => (
     <div>
-      <h2>{slug}</h2>
+      <Link href={`/posts/${slug}`}>
+        <h2>{slug}</h2>
+      </Link>
     </div>
   ))
   return <h1>{postPreviews}</h1>
